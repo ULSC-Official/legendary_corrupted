@@ -4,73 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- GOOGLE SEARCH CONSOLE VERIFICATION -->
+  <!-- ✅ GOOGLE SEARCH CONSOLE VERIFICATION -->
   <meta name="google-site-verification" content="dBETfDZWKL-vspp7UKNOSVuXvBIYK00g0fZx8lJ43DI" />
 
-  <title>Legendary Cursed</title>
+  <title>DOM Family Court — Legendary (Corrupted)</title>
 
   <style>
-    body {
-      margin: 0;
-      padding: 40px;
-      background: radial-gradient(circle at top, #11162a, #060812);
-      color: #e6e6e6;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    :root {
+      --bg: #0b0b0f;
+      --panel: #14141b;
+      --accent: #7c7cff;
+      --danger: #ff4d4d;
+      --muted: #9aa0a6;
     }
 
-    h1 {
-      margin-bottom: 32px;
-      font-size: 2.4rem;
-      letter-spacing: 0.02em;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #1b1b2a, transparent 60%),
+        radial-gradient(800px 400px at 90% 10%, #221b3a, transparent 55%),
+        var(--bg);
+      color: #e6e8eb;
     }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11,11,15,.85), rgba(11,11,15,.6));
+      border-bottom: 1px solid #1f2030;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-weight: 800;
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #1c1d2b;
+      color: var(--accent);
+      border: 1px solid #2b2d55;
+      font-size: 12px;
+    }
+
+    nav a {
+      color: #cfd3ff;
+      margin-left: 14px;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: .85;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    .hero {
+      padding: 90px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 64px);
+      line-height: 1.05;
+      margin: 0 0 16px;
+    }
+
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: .6;
+    }
+
+    .glitch::before {
+      color: var(--accent);
+      transform: translate(2px, -1px);
+    }
+
+    .glitch::after {
+      color: var(--danger);
+      transform: translate(-2px, 1px);
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: linear-gradient(180deg, #2b2d55, #1f2145);
+      color: #fff;
+      border: 1px solid #3a3d7a;
+      border-radius: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button.alt {
+      background: #17182a;
+      color: #d9dcff;
+    }
+
+    button.warn {
+      background: linear-gradient(180deg, #5a1f1f, #3b1414);
+      border-color: #7a2a2a;
+    }
+
+    section { padding: 40px 20px; }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      gap: 16px;
     }
 
     .card {
       position: relative;
-      background: linear-gradient(145deg, #12182b, #0d1222);
+      background: linear-gradient(180deg, #15162a, #111226);
+      border: 1px solid #23245a;
       border-radius: 16px;
-      padding: 38px 24px 24px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      overflow: hidden;
+      padding: 46px 16px 16px;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 44px rgba(0,0,0,0.65);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      font-family: monospace;
-    }
-
-    .muted {
-      font-size: 0.9rem;
-      color: #aab0ff;
-    }
-
-    /* 👁 CLASSIFIED — INVISIBLE UNTIL HOVER */
+    /* 👁 HOVER LORE — ACTUALLY HOVER ONLY */
     .card::after {
       content: "👁 CLASSIFIED COURT RECORD";
       position: absolute;
-      top: 10px;
-      left: 16px;
+      top: 12px;
+      right: 14px;
       font-size: 11px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: #ff4d4d;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0,0,0,0.75);
       padding: 5px 8px;
       border-radius: 6px;
       opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform: translateY(-6px);
+      transition: opacity .25s ease, transform .25s ease;
       pointer-events: none;
     }
 
@@ -78,27 +170,98 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid #1f2030;
+      padding: 24px 20px;
+      color: #b6bbff;
+    }
+
+    .court {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #0f1020;
+      border: 1px dashed #3a3d7a;
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .court.show { display: block; }
   </style>
 </head>
 
 <body>
-  <h1>Legendary Cursed</h1>
-
-  <div class="grid">
-    <div class="card">
-      <h3>attachShadow({ mode: 'open' })</h3>
-      <p class="muted">Secrets, but make it inspectable.</p>
+  <header>
+    <div class="wrap" style="display:flex; justify-content:space-between;">
+      <div class="brand">
+        <span class="badge">LEGENDARY</span>
+        <span>DOM Family Court</span>
+        <span class="badge">corrupted</span>
+      </div>
+      <nav>
+        <a href="#lore">Lore</a>
+        <a href="#api">API</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#verdict">Verdict</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>eval()</h3>
-      <p class="muted">What could possibly go wrong.</p>
-    </div>
+  <main>
+    <section class="hero wrap">
+      <h1 class="glitch" data-text="document.body.innerHTML = document.body.innerHTML;">
+        document.body.innerHTML = document.body.innerHTML;
+      </h1>
+      <p class="muted">A memorial to DOM operations, family drama, and perfectly legal chaos.</p>
+      <div class="cta">
+        <button onclick="toggleCourt()">Open Court</button>
+        <button class="alt" onclick="copyLink()">Copy Link</button>
+        <button class="warn" onclick="corrupt()">Normalize 😈</button>
+      </div>
+      <div id="court" class="court"></div>
+    </section>
 
-    <div class="card">
-      <h3>document.write()</h3>
-      <p class="muted">A clean break. Or so the comments said.</p>
+    <section id="lore" class="wrap">
+      <h2>Lore</h2>
+      <div class="grid">
+        <div class="card"><h3>attachShadow({ mode: 'open' })</h3><p class="muted">Secrets, but make it inspectable.</p></div>
+        <div class="card"><h3>eval()</h3><p class="muted">What could possibly go wrong.</p></div>
+        <div class="card"><h3>document.write()</h3><p class="muted">A clean break. Or so the comments said.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <small>© DOM Family Court. Don’t trust global variables.</small>
     </div>
-  </div>
+  </footer>
+
+  <script>
+    function toggleCourt() {
+      const el = document.getElementById('court');
+      el.classList.toggle('show');
+      el.textContent = el.classList.contains('show')
+        ? 'COURT OPENED:\\n- normalize(): sustained\\n- isSameNode(): emotionally yes'
+        : '';
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(location.href);
+      alert('Link copied!');
+    }
+
+    function corrupt() {
+      document.body.style.filter =
+        'hue-rotate(' + Math.floor(Math.random()*360) + 'deg)';
+    }
+  </script>
 </body>
 </html>
