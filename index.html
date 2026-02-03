@@ -12,88 +12,100 @@
   <style>
     body {
       margin: 0;
-      padding: 40px;
-      background: #0b0f1a;
+      padding: 48px;
+      background: radial-gradient(circle at top, #11162a, #070a14);
       color: #e6e6e6;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     h1 {
-      margin-bottom: 30px;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      opacity: 0.75;
+      margin-bottom: 40px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 24px;
     }
 
     .card {
       position: relative;
       background: linear-gradient(145deg, #12182b, #0d1222);
-      border-radius: 14px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow: hidden;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.7);
     }
 
     .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
+      margin: 0 0 10px;
       font-family: monospace;
+      font-size: 1.1rem;
     }
 
-    .muted {
-      font-size: 0.9rem;
+    .card p {
+      margin: 0;
       color: #aab0ff;
+      font-size: 0.95rem;
     }
 
-    /* 👁 HOVER LORE — EYE ONLY, HIDDEN BY DEFAULT */
+    /* 👁 CURSED HOVER LORE — ONLY ON HOVER */
     .card::after {
       content: "👁 CLASSIFIED COURT RECORD";
       position: absolute;
       top: 12px;
       right: 12px;
-      font-size: 13px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
       color: #ff4d4d;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0, 0, 0, 0.7);
       padding: 6px 8px;
       border-radius: 6px;
       opacity: 0;
-      transition: opacity 0.25s ease;
+      transform: translateY(-4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
       pointer-events: none;
-      letter-spacing: 0.3px;
     }
 
     .card:hover::after {
       opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
   <h1>Legendary Cursed</h1>
+  <div class="subtitle">
+    A memorial to DOM operations, family drama, and perfectly legal chaos.
+  </div>
 
   <div class="grid">
     <div class="card">
       <h3>attachShadow({ mode: 'open' })</h3>
-      <p class="muted">Secrets, but make it inspectable.</p>
+      <p>Secrets, but make it inspectable.</p>
     </div>
 
     <div class="card">
       <h3>eval()</h3>
-      <p class="muted">What could possibly go wrong.</p>
+      <p>What could possibly go wrong.</p>
     </div>
 
     <div class="card">
       <h3>document.write()</h3>
-      <p class="muted">A clean break. Or so the comments said.</p>
+      <p>A clean break. Or so the comments said.</p>
     </div>
   </div>
 </body>
